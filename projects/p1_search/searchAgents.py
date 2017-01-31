@@ -56,6 +56,7 @@ class GoWestAgent(Agent):
 #       after you fill in parts of search.py          #
 #######################################################
 
+
 class SearchAgent(Agent):
     """
     This very general search agent finds a path using a supplied search
