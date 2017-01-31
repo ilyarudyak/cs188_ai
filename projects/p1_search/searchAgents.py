@@ -280,8 +280,11 @@ class CornersProblem(search.SearchProblem):
         """
         self.walls = startingGameState.getWalls()
         self.startingPosition = startingGameState.getPacmanPosition()
+        print "starting position =", self.startingPosition
+
         top, right = self.walls.height-2, self.walls.width-2
         self.corners = ((1,1), (1,top), (right, 1), (right, top))
+        print "corners = ", self.corners
         for corner in self.corners:
             if not startingGameState.hasFood(*corner):
                 print 'Warning: no food in corner ' + str(corner)
@@ -296,14 +299,19 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return (self.startingPosition, '0000')
 
     def isGoalState(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        position, visited_corners = state
+
+        print state    
+
+        if not visited_corners == '1111': return False
+        else: return True    
 
     def getSuccessors(self, state):
         """
@@ -320,12 +328,20 @@ class CornersProblem(search.SearchProblem):
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
             # Add a successor state to the successor list if the action is legal
             # Here's a code snippet for figuring out whether a new position hits a wall:
-            #   x,y = currentPosition
-            #   dx, dy = Actions.directionToVector(action)
-            #   nextx, nexty = int(x + dx), int(y + dy)
-            #   hitsWall = self.walls[nextx][nexty]
+            position, visited_corners = state
+            x,y = position
+            dx, dy = Actions.directionToVector(action)
+            nextx, nexty = int(x + dx), int(y + dy)
+            hitsWall = self.walls[nextx][nexty]
 
             "*** YOUR CODE HERE ***"
+            if not hitsWall:
+                if (nextx, nexty) in self.corners:
+                    visited_corners_list = list(visited_corners)
+                    visited_corners_list[self.corners.index((nextx, nexty))] = '1'
+                    visited_corners = ''.join(visited_corners_list)
+                successor_state = ((nextx, nexty), visited_corners)
+                successors.append( (successor_state, action, 1) )
 
         self._expanded += 1 # DO NOT CHANGE
         return successors
