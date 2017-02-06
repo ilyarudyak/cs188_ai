@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -62,6 +62,7 @@ class SearchProblem:
         """
         util.raiseNotDefined()
 
+
 def tinyMazeSearch(problem):
     """
     Returns a sequence of moves that solves tinyMaze.  For any other maze, the
@@ -70,7 +71,8 @@ def tinyMazeSearch(problem):
     from game import Directions
     s = Directions.SOUTH
     w = Directions.WEST
-    return  [s, s, w, s, w, w, s, w]
+    return [s, s, w, s, w, w, s, w]
+
 
 def depthFirstSearch(problem):
     """
@@ -89,51 +91,58 @@ def depthFirstSearch(problem):
 
     closed = set()
     fringe = util.Stack()
-    fringe.push( (problem.getStartState(), list()) ) 
+    fringe.push((problem.getStartState(), list()))
 
     while True:
-        if fringe.isEmpty(): return []
-        node, path = fringe.pop()
-        if problem.isGoalState(node): 
-            return path
-        if not node in closed:
-            closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):                 
-                fringe.push( (child_node, path + [action]) )
-
-def breadthFirstSearch(problem):
-    """Search the shallowest nodes in the search tree first."""
-    
-    closed = set()
-    fringe = util.Queue()
-    fringe.push( (problem.getStartState(), list()) ) 
-
-    while True:
-        if fringe.isEmpty(): return []
+        if fringe.isEmpty():
+            return []
         node, path = fringe.pop()
         if problem.isGoalState(node):
             return path
         if not node in closed:
             closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):                 
-                fringe.push( (child_node, path + [action]) )
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action]))
 
-def uniformCostSearch(problem):
-    """Search the node of least total cost first."""
-    
+
+def breadthFirstSearch(problem):
+    """Search the shallowest nodes in the search tree first."""
+
     closed = set()
-    fringe = util.PriorityQueue()
-    fringe.push( (problem.getStartState(), list(), 0), 0 ) 
+    fringe = util.Queue()
+    fringe.push((problem.getStartState(), list()))
 
     while True:
-        if fringe.isEmpty(): return []
-        node, path, distance = fringe.pop()
-        if problem.isGoalState(node): 
+        if fringe.isEmpty():
+            return []
+        node, path = fringe.pop()
+        if problem.isGoalState(node):
             return path
         if not node in closed:
             closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):                 
-                fringe.push( (child_node, path + [action], distance + step_cost), distance + step_cost )
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action]))
+
+
+def uniformCostSearch(problem):
+    """Search the node of least total cost first."""
+
+    closed = set()
+    fringe = util.PriorityQueue()
+    fringe.push((problem.getStartState(), list(), 0), 0)
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path, distance = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push(
+                    (child_node, path + [action], distance + step_cost), distance + step_cost)
+
 
 def nullHeuristic(state, problem=None):
     """
@@ -142,23 +151,26 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
+
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
 
     closed = set()
     fringe = util.PriorityQueue()
-    fringe.push( (problem.getStartState(), list(), 0), heuristic(problem.getStartState(), problem) ) 
+    fringe.push((problem.getStartState(), list(), 0),
+                heuristic(problem.getStartState(), problem))
 
     while True:
-        if fringe.isEmpty(): return []
+        if fringe.isEmpty():
+            return []
         node, path, distance = fringe.pop()
-        if problem.isGoalState(node): 
+        if problem.isGoalState(node):
             return path
         if not node in closed:
             closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):                 
-                fringe.push( (child_node, path + [action], distance + step_cost), 
-                    distance + step_cost + heuristic(child_node, problem))
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action], distance + step_cost),
+                            distance + step_cost + heuristic(child_node, problem))
 
 
 # Abbreviations
