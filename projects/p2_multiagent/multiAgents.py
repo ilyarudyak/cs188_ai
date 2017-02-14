@@ -274,7 +274,25 @@ def betterEvaluationFunction(currentGameState):
       DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    pacmanPos = currentGameState.getPacmanPosition()
+
+    food = currentGameState.getFood()
+    capsules = currentGameState.getCapsules()
+    return currentGameState.getScore() - 10 * capsuleDistancePlan(pacmanPos, capsules) - foodDistPlan(pacmanPos, food)
+
+def capsuleDistancePlan(position, capsules):
+    if capsules:
+        return sum([ distance(position, capsule) for capsule in capsules ])
+    else:
+        return 0
+
+def foodDistPlan(position, food):
+
+    numFood = len(food.asList())
+    if numFood == 0:
+        return 0
+    else:
+        return min([distance(position, foodPos) for foodPos in food.asList()])
 
 # Abbreviation
 better = betterEvaluationFunction

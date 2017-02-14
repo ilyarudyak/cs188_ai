@@ -415,7 +415,8 @@ def cornersHeuristic(state, problem):
 
     "*** YOUR CODE HERE ***"
     position, visited_corners = state
-    # return num_non_visited_corners(visited_corners)     # number of non-visited states, 1908 nodes expanded
+    # return num_non_visited_corners(visited_corners)     # number of
+    # non-visited states, 1908 nodes expanded
     return max_manhattan(state, problem)
 
 
@@ -427,7 +428,8 @@ def max_manhattan(state, problem):
     corners = problem.corners
     position, visited_corners = state
 
-    remaining_corners = [corners[i] for i, c in enumerate(visited_corners) if c == '0']
+    remaining_corners = [corners[i]
+                         for i, c in enumerate(visited_corners) if c == '0']
     if remaining_corners:
         return max([manhattanHeuristicCorner(position, corner) for corner in remaining_corners])
     else:
@@ -535,7 +537,35 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    print problem.walls
+    if foodGrid.asList():
+        return manh_distance_furthest_dot(position, foodGrid.asList())
+    else:
+        return 0
+
+
+def distance_closest_dot(position, foodGridList):
+    return min([euclidian_distance(position, foodPosition) for foodPosition in foodGridList])
+
+
+def distance_furthest_dot(position, foodGridList):
+    return max([euclidian_distance(position, foodPosition) for foodPosition in foodGridList])
+
+
+def manh_distance_furthest_dot(position, foodGridList):
+    return max([manhattan_distance(position, foodPosition) for foodPosition in foodGridList])
+
+
+def euclidian_distance(position, foodPosition):
+    xy1 = position
+    xy2 = foodPosition
+    return ((xy1[0] - xy2[0]) ** 2 + (xy1[1] - xy2[1]) ** 2) ** 0.5
+
+
+def manhattan_distance(position, foodPosition):
+    xy1 = position
+    xy2 = foodPosition
+    return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
 
 
 class ClosestDotSearchAgent(SearchAgent):

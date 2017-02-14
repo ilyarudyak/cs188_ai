@@ -16,6 +16,8 @@ python2 pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhatta
 python2 pacman.py -l tinyCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 python2 pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
 python2 pacman.py -l mediumCorners -p AStarCornersAgent -z 0.5
+
+problem 7
 python2 pacman.py -l testSearch -p AStarFoodSearchAgent
 python2 pacman.py -l trickySearch -p AStarFoodSearchAgent
 python2 pacman.py -l bigSearch -p ClosestDotSearchAgent -z .5 
