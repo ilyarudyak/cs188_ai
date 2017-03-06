@@ -130,6 +130,17 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        currentValues = util.Counter()
+        states = self.mdp.getStates()
+        statesLen = len(states)
+        counter = 0
+        for _ in range(self.iterations):
+            state = states[counter % statesLen]
+            # update values only if we have legal actions
+            if self.mdp.getPossibleActions(state):
+                self.values[state] = self.maxQSum(state, currentValues) 
+            counter += 1
+            currentValues = util.Counter(self.values)
 
 class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     """
