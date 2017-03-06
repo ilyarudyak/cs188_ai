@@ -1,31 +1,3 @@
-# valueIterationAgents.py
-# -----------------------
-# Licensing Information:  You are free to use or extend these projects for
-# educational purposes provided that (1) you do not distribute or publish
-# solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
-# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
-# The core projects and autograders were primarily created by John DeNero
-# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# Student side autograding was added by Brad Miller, Nick Hay, and
-# Pieter Abbeel (pabbeel@cs.berkeley.edu).
-
-
-# valueIterationAgents.py
-# -----------------------
-# Licensing Information:  You are free to use or extend these projects for
-# educational purposes provided that (1) you do not distribute or publish
-# solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
-# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
-# The core projects and autograders were primarily created by John DeNero
-# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# Student side autograding was added by Brad Miller, Nick Hay, and
-# Pieter Abbeel (pabbeel@cs.berkeley.edu).
-
-
 import mdp, util
 
 from learningAgents import ValueEstimationAgent
@@ -62,7 +34,31 @@ class ValueIterationAgent(ValueEstimationAgent):
     def runValueIteration(self):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
+        currentValues = util.Counter()
+        for _ in range(self.iterations):
+            for state in self.mdp.getStates():
+                # update values only if we have legal actions
+                if self.mdp.getPossibleActions(state):
+                    self.values[state] = self.maxQSum(state, currentValues) 
+            currentValues = util.Counter(self.values)    
 
+    # ------------- helper functions -------------           
+
+    def maxQSum(self, state, currentValues):
+        return max([self.qSum(action, state, currentValues) 
+          for action in self.mdp.getPossibleActions(state)])
+
+    def qSum(self, action, state, currentValues):
+        bellmanSum = 0 # sum over s'(T * (R + gamma * Vk(s')))
+        for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action):
+            reward = self.mdp.getReward(state, action, nextState)
+            bellmanSum += prob * (reward + self.discount * currentValues[nextState])
+        return bellmanSum
+
+    def argmax(self, qDic):
+        return max(qDic.items(), key=lambda x: x[1])[0]
+
+    # ------------- helper functions -------------    
 
     def getValue(self, state):
         """
@@ -77,7 +73,7 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.qSum(action, state, self.values)
 
     def computeActionFromValues(self, state):
         """
@@ -89,7 +85,11 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        legalActions = self.mdp.getPossibleActions(state)
+        if legalActions:
+            return self.argmax({action:self.qSum(action, state, self.values) for action in legalActions})
+        else:
+            return None    
 
     def getPolicy(self, state):
         return self.computeActionFromValues(state)
