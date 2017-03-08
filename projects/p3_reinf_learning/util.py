@@ -206,6 +206,9 @@ class PriorityQueue:
         else:
             self.push(item, priority)
 
+    def __str__(self):
+        return str(self.heap)
+
 class PriorityQueueWithFunction(PriorityQueue):
     """
     Implements a priority queue with the same push/pop signature of the

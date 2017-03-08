@@ -45,8 +45,10 @@ class ValueIterationAgent(ValueEstimationAgent):
     # ------------- helper functions -------------           
 
     def maxQSum(self, state, currentValues):
-        return max([self.qSum(action, state, currentValues) 
-          for action in self.mdp.getPossibleActions(state)])
+        qSums = [self.qSum(action, state, currentValues) 
+          for action in self.mdp.getPossibleActions(state)]
+        # print qSums  
+        return max(qSums)
 
     def qSum(self, action, state, currentValues):
         bellmanSum = 0 # sum over s'(T * (R + gamma * Vk(s')))
@@ -161,5 +163,68 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
-        
+        predecessors = self.getPredecessors()
+        diffPQ = util.PriorityQueue()
+        for state in self.mdp.getStates():
+            if not self.mdp.isTerminal(state):
+                diffPQ.push(state, self.initialDiff(state))       
+        # print diffPQ
+                
+        for _ in range(self.iterations):
+            if diffPQ.isEmpty(): 
+                return
+            # print diffPQ      
+            state = diffPQ.pop()
+            # print diffPQ, state
+            self.updateState(state)   
+            self.updatePredecessors(diffPQ, state, predecessors)
+            # print diffPQ
+            # print ""
+
+    # ------------- helper functions -------------          
+
+    def initialDiff(self, state):
+        return -abs(self.values[state] - self.maxQSum(state, self.values))
+
+    def updatePredecessors(self, diffPQ, state, predecessors):
+        for predecessor in predecessors[state]:
+            diff = abs(self.values[predecessor] - self.maxQSum(predecessor, self.values))
+            if diff > self.theta:
+                diffPQ.update(predecessor, -diff)                  
+
+    def updateState(self, state):
+        # update values only if we have legal actions
+        if not self.mdp.isTerminal(state):
+            self.values[state] = self.maxQSum(state, self.values)  
+
+    def getPredecessors(self): 
+        predecessors = {state:set() for state in self.mdp.getStates()}
+        for state in self.mdp.getStates():
+            for action in self.mdp.getPossibleActions(state):
+                for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action):
+                    if prob > 0 and nextState != state:
+                        predecessors[nextState].add(state)
+        return predecessors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
