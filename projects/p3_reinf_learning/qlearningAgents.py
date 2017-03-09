@@ -43,6 +43,7 @@ class QLearningAgent(ReinforcementAgent):
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
+        self.qValues = util.Counter() 
 
     def getQValue(self, state, action):
         """
@@ -51,30 +52,11 @@ class QLearningAgent(ReinforcementAgent):
           or the Q node value otherwise
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
-
-
-    def computeValueFromQValues(self, state):
-        """
-          Returns max_action Q(state,action)
-          where the max is over legal actions.  Note that if
-          there are no legal actions, which is the case at the
-          terminal state, you should return a value of 0.0.
-        """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
-
-    def computeActionFromQValues(self, state):
-        """
-          Compute the best action to take in a state.  Note that if there
-          are no legal actions, which is the case at the terminal state,
-          you should return None.
-        """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.qValues[(state, action)]
 
     def getAction(self, state):
         """
+          Question 7
           Compute the action to take in the current state.  With
           probability self.epsilon, we should take a random action and
           take the best policy action otherwise.  Note that if there are
@@ -102,7 +84,12 @@ class QLearningAgent(ReinforcementAgent):
           it will be called on your behalf
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        if self.getLegalActions(nextState):
+            nextStateQValues = [self.qValues[(nextState, nextAction)] for nextAction in self.getLegalActions(nextState)]
+            sample = reward + self.discount * max(nextStateQValues)
+        else:
+            sample = reward    
+        self.qValues[(state, action)] = (1 - self.alpha) * self.qValues[(state, action)] + self.alpha * sample
 
     def getPolicy(self, state):
         return self.computeActionFromQValues(state)
@@ -110,6 +97,36 @@ class QLearningAgent(ReinforcementAgent):
     def getValue(self, state):
         return self.computeValueFromQValues(state)
 
+    # ---------------- helper functions ----------------     
+
+    def computeValueFromQValues(self, state):
+        """
+          Returns max_action Q(state,action)
+          where the max is over legal actions.  Note that if
+          there are no legal actions, which is the case at the
+          terminal state, you should return a value of 0.0.
+        """
+        "*** YOUR CODE HERE ***"
+        if self.getLegalActions(state):
+            return max([self.getQValue(state, action) for action in self.getLegalActions(state)])
+        else:
+            return 0
+
+    def computeActionFromQValues(self, state):
+        """
+          Compute the best action to take in a state.  Note that if there
+          are no legal actions, which is the case at the terminal state,
+          you should return None.
+        """
+        "*** YOUR CODE HERE ***"
+        if self.getLegalActions(state):
+            actionQValueDic = {action:self.getQValue(state, action) for action in self.getLegalActions(state)}
+            return self.argmax(actionQValueDic)
+        else:
+            return None
+
+    def argmax(self, actionQValueDic):
+        return max(actionQValueDic.items(), key=lambda x: x[1])[0]
 
 class PacmanQAgent(QLearningAgent):
     "Exactly the same as QLearningAgent, but with different default parameters"
@@ -184,3 +201,23 @@ class ApproximateQAgent(PacmanQAgent):
             # you might want to print your weights here for debugging
             "*** YOUR CODE HERE ***"
             pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
