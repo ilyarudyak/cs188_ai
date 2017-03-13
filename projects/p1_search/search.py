@@ -73,55 +73,27 @@ def tinyMazeSearch(problem):
     w = Directions.WEST
     return [s, s, w, s, w, w, s, w]
 
+def universalSearch(problem, initFringe):
+    closed = set()
+    fringe = initFringe
+    fringe.push((problem.getStartState(), list()))
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action]))
 
 def depthFirstSearch(problem):
-    """
-    Search the deepest nodes in the search tree first.
-
-    Your search algorithm needs to return a list of actions that reaches the
-    goal. Make sure to implement a graph search algorithm.
-
-    To get started, you might want to try some of these simple commands to
-    understand the search problem that is being passed in:
-
-    print "Start:", problem.getStartState()
-    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    """
-
-    closed = set()
-    fringe = util.Stack()
-    fringe.push((problem.getStartState(), list()))
-
-    while True:
-        if fringe.isEmpty():
-            return []
-        node, path = fringe.pop()
-        if problem.isGoalState(node):
-            return path
-        if not node in closed:
-            closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):
-                fringe.push((child_node, path + [action]))
-
+    return universalSearch(problem, util.Stack())
 
 def breadthFirstSearch(problem):
-    """Search the shallowest nodes in the search tree first."""
-
-    closed = set()
-    fringe = util.Queue()
-    fringe.push((problem.getStartState(), list()))
-
-    while True:
-        if fringe.isEmpty():
-            return []
-        node, path = fringe.pop()
-        if problem.isGoalState(node):
-            return path
-        if not node in closed:
-            closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):
-                fringe.push((child_node, path + [action]))
+    return universalSearch(problem, util.Queue())
 
 
 def uniformCostSearch(problem):
@@ -172,6 +144,55 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                 fringe.push((child_node, path + [action], distance + step_cost),
                             distance + step_cost + heuristic(child_node, problem))
 
+
+# ------------------ old versions ------------------
+
+def depthFirstSearch2(problem):
+    """
+    Search the deepest nodes in the search tree first.
+
+    Your search algorithm needs to return a list of actions that reaches the
+    goal. Make sure to implement a graph search algorithm.
+
+    To get started, you might want to try some of these simple commands to
+    understand the search problem that is being passed in:
+
+    print "Start:", problem.getStartState()
+    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
+    print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    """
+
+    closed = set()
+    fringe = util.Stack()
+    fringe.push((problem.getStartState(), list()))
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action]))
+def breadthFirstSearch2(problem):
+    """Search the shallowest nodes in the search tree first."""
+
+    closed = set()
+    fringe = util.Queue()
+    fringe.push((problem.getStartState(), list()))
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action]))                
 
 # Abbreviations
 bfs = breadthFirstSearch
