@@ -14,3 +14,9 @@ push to DS a tuple: `(child_node, path + [action])`
 heuristic, in case UCS it `nullHeuristic`) searches;
 
 ## question 5
+* **what is the problem here?** we have 4 food dots in corners of the maze and 
+have to find them all;
+* **what heuristic do we use?** `max manhattan distance` to remaining corners;
+why is that? max heuristic is admissible - see slide 28 of lecture 3 (2016);
+* **how do we represent state?** as a tuple `(state, '0101')` where `'0101'` represents
+visited corners; 

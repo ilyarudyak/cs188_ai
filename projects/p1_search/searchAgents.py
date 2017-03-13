@@ -370,15 +370,20 @@ class CornersProblem(search.SearchProblem):
             "*** YOUR CODE HERE ***"
             if not hitsWall:
                 if (nextx, nexty) in self.corners:
-                    visited_corners_list = list(visited_corners)
-                    visited_corners_list[
-                        self.corners.index((nextx, nexty))] = '1'
-                    visited_corners = ''.join(visited_corners_list)
+                    # visited_corners_list = list(visited_corners)
+                    # visited_corners_list[self.corners.index((nextx, nexty))] = '1'
+                    # visited_corners = ''.join(visited_corners_list)
+                    visited_corners = self.updateState(visited_corners, (nextx, nexty))
                 successor_state = ((nextx, nexty), visited_corners)
                 successors.append((successor_state, action, 1))
 
         self._expanded += 1  # DO NOT CHANGE
         return successors
+
+    def updateState(self, visited_corners, corner):
+        visited_corners_list = list(visited_corners)
+        visited_corners_list[self.corners.index(corner)] = '1'
+        return ''.join(visited_corners_list) 
 
     def getCostOfActions(self, actions):
         """
@@ -427,9 +432,8 @@ def num_non_visited_corners(visited_corners):
 def max_manhattan(state, problem):
     corners = problem.corners
     position, visited_corners = state
-
-    remaining_corners = [corners[i]
-                         for i, c in enumerate(visited_corners) if c == '0']
+    remaining_corners = [corners[i] for i, c in enumerate(visited_corners) if c == '0']
+    
     if remaining_corners:
         return max([manhattanHeuristicCorner(position, corner) for corner in remaining_corners])
     else:
