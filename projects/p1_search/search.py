@@ -89,33 +89,6 @@ def universalSearch(problem, initFringe):
             for child_node, action, step_cost in problem.getSuccessors(node):
                 fringe.push((child_node, path + [action]))
 
-def depthFirstSearch(problem):
-    return universalSearch(problem, util.Stack())
-
-def breadthFirstSearch(problem):
-    return universalSearch(problem, util.Queue())
-
-
-def uniformCostSearch(problem):
-    """Search the node of least total cost first."""
-
-    closed = set()
-    fringe = util.PriorityQueue()
-    fringe.push((problem.getStartState(), list(), 0), 0)
-
-    while True:
-        if fringe.isEmpty():
-            return []
-        node, path, distance = fringe.pop()
-        if problem.isGoalState(node):
-            return path
-        if not node in closed:
-            closed.add(node)
-            for child_node, action, step_cost in problem.getSuccessors(node):
-                fringe.push(
-                    (child_node, path + [action], distance + step_cost), distance + step_cost)
-
-
 def nullHeuristic(state, problem=None):
     """
     A heuristic function estimates the cost from the current state to the nearest
@@ -123,10 +96,7 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
-
-def aStarSearch(problem, heuristic=nullHeuristic):
-    """Search the node that has the lowest combined cost and heuristic first."""
-
+def universalHeuristicSearch(problem, heuristic=nullHeuristic):
     closed = set()
     fringe = util.PriorityQueue()
     fringe.push((problem.getStartState(), list(), 0),
@@ -143,6 +113,21 @@ def aStarSearch(problem, heuristic=nullHeuristic):
             for child_node, action, step_cost in problem.getSuccessors(node):
                 fringe.push((child_node, path + [action], distance + step_cost),
                             distance + step_cost + heuristic(child_node, problem))
+
+def depthFirstSearch(problem):
+    return universalSearch(problem, util.Stack())
+
+def breadthFirstSearch(problem):
+    return universalSearch(problem, util.Queue())
+
+def uniformCostSearch(problem):
+    """Search the node of least total cost first."""
+    return universalHeuristicSearch(problem)
+
+
+def aStarSearch(problem, heuristic=nullHeuristic):
+    """Search the node that has the lowest combined cost and heuristic first."""
+    return universalHeuristicSearch(problem, heuristic)
 
 
 # ------------------ old versions ------------------
@@ -193,6 +178,43 @@ def breadthFirstSearch2(problem):
             closed.add(node)
             for child_node, action, step_cost in problem.getSuccessors(node):
                 fringe.push((child_node, path + [action]))                
+def uniformCostSearch2(problem):
+    """Search the node of least total cost first."""
+
+    closed = set()
+    fringe = util.PriorityQueue()
+    fringe.push((problem.getStartState(), list(), 0), 0)
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path, distance = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push(
+                    (child_node, path + [action], distance + step_cost), distance + step_cost)
+def aStarSearch2(problem, heuristic=nullHeuristic):
+    """Search the node that has the lowest combined cost and heuristic first."""
+
+    closed = set()
+    fringe = util.PriorityQueue()
+    fringe.push((problem.getStartState(), list(), 0),
+                heuristic(problem.getStartState(), problem))
+
+    while True:
+        if fringe.isEmpty():
+            return []
+        node, path, distance = fringe.pop()
+        if problem.isGoalState(node):
+            return path
+        if not node in closed:
+            closed.add(node)
+            for child_node, action, step_cost in problem.getSuccessors(node):
+                fringe.push((child_node, path + [action], distance + step_cost),
+                            distance + step_cost + heuristic(child_node, problem))
 
 # Abbreviations
 bfs = breadthFirstSearch
