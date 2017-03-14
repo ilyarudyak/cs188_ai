@@ -541,9 +541,15 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    print problem.walls
+    # print problem.walls
     if foodGrid.asList():
-        return manh_distance_furthest_dot(position, foodGrid.asList())
+
+        # print foodGrid.asList()
+        # print position, isWallBetween(position, foodGrid.asList()[0], problem.walls)
+        # print ""
+
+        # return manh_distance_furthest_dot(position, foodGrid.asList())
+        return manhDistanceFurthestDotWithWalls(position, foodGrid.asList(), problem.walls)
     else:
         return 0
 
@@ -559,6 +565,8 @@ def distance_furthest_dot(position, foodGridList):
 def manh_distance_furthest_dot(position, foodGridList):
     return max([manhattan_distance(position, foodPosition) for foodPosition in foodGridList])
 
+def manhDistanceFurthestDotWithWalls(position, foodGridList, walls):
+    return max([manhattanDistanceWithWalls(position, foodPosition, walls) for foodPosition in foodGridList])
 
 def euclidian_distance(position, foodPosition):
     xy1 = position
@@ -570,6 +578,41 @@ def manhattan_distance(position, foodPosition):
     xy1 = position
     xy2 = foodPosition
     return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
+
+def manhattanDistanceWithWalls(position, foodPosition, walls):
+    xy1 = position
+    xy2 = foodPosition
+    manhattanDistance = abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
+    if isWallBetween(position, foodPosition, walls):
+        return manhattanDistance + 8
+    else:
+        return manhattanDistance
+
+def isWallBetween(position, foodPosition, walls):
+    x1, y1 = position
+    x2, y2 = foodPosition
+    for y in range(min(y1, y2), max(y1, y2)):
+        xRange = range(min(x1, x2), max(x1, x2)+1)
+        countWalls = 0
+        for x in xRange:
+            if walls[x][y]: 
+                countWalls += 1
+        if countWalls == len(xRange):
+            return True 
+    return False   
+
+def countWallsBetween(position1, position2, walls):
+    x1, y1 = position1
+    x2, y2 = position2
+    count = 0
+    for x in range(min(x1, x2), max(x1, x2)):
+        if (walls[x][y1] or walls[x][y2]): count += 1
+        if (): count += 1
+    for y in range(min(y1, y2), max(y1, y2)):
+        if (walls[x1][y]): count += 1
+        if (walls[x2][y]): count += 1
+    return count        
+
 
 
 class ClosestDotSearchAgent(SearchAgent):
