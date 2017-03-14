@@ -542,16 +542,24 @@ def foodHeuristic(state, problem):
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
     # print problem.walls
-    if foodGrid.asList():
+    # if foodGrid.asList():
 
-        # print foodGrid.asList()
-        # print position, isWallBetween(position, foodGrid.asList()[0], problem.walls)
-        # print ""
+    #     # print foodGrid.asList()
+    #     # print position, isWallBetween(position, foodGrid.asList()[0], problem.walls)
+    #     # print ""
 
-        # return manh_distance_furthest_dot(position, foodGrid.asList())
-        return manhDistanceFurthestDotWithWalls(position, foodGrid.asList(), problem.walls)
-    else:
-        return 0
+    #     # return manh_distance_furthest_dot(position, foodGrid.asList())
+    #     return manhDistanceFurthestDotWithWalls(position, foodGrid.asList(), problem.walls)
+    # else:
+    #     return 0
+
+    distances = [0]
+    for food in foodGrid.asList():
+        # distances.append(util.manhattanDistance(position, food))
+        distances.append(mazeDistance(position, food, problem.startingGameState))
+    distanceFurthest = max(distances)
+
+    return distanceFurthest
 
 
 def distance_closest_dot(position, foodGridList):
@@ -584,7 +592,7 @@ def manhattanDistanceWithWalls(position, foodPosition, walls):
     xy2 = foodPosition
     manhattanDistance = abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
     if isWallBetween(position, foodPosition, walls):
-        return manhattanDistance + 8
+        return manhattanDistance + 4
     else:
         return manhattanDistance
 
@@ -646,7 +654,7 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return search.astar(problem)
 
 
 class AnyFoodSearchProblem(PositionSearchProblem):
@@ -683,7 +691,8 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x, y = state
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.food[x][y]
+
 
 
 def mazeDistance(point1, point2, gameState):

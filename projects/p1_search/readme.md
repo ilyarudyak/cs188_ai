@@ -33,4 +33,41 @@ to food dot (in other words - distance to furthes food dot);
 * **improvement** we may check if any wall between pacman and food dot, so we can get something like 8686;
 it's full credit but still far away from challenge;
 
-## question 8 
+## question 8
+* **what is the problem here?** we can't solve even medium problem optimally in short time;
+we may try `python2 pacman.py -l mediumSearch -p AStarFoodSearchAgent` and wait; so we try
+greedy solution to eat closest dot;
+* **how to run this solution in pacman?** `python2 pacman.py -l bigSearch -p ClosestDotSearchAgent -z .5`
+
+----
+
+```
+Provisional grades
+==================
+Question q1: 3/3
+Question q2: 3/3
+Question q3: 3/3
+Question q4: 3/3
+Question q5: 3/3
+Question q6: 3/3
+Question q7: 4/4
+Question q8: 3/3
+------------------
+Total: 25/25
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
