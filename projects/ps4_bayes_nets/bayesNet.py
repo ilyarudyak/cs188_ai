@@ -849,3 +849,11 @@ def printStarterBayesNet():
 
 if __name__ == "__main__":
     printStarterBayesNet()
+
+
+
+
+
+
+
+
