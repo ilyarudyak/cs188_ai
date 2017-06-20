@@ -208,7 +208,7 @@ def fillObsCPT(bayesNet, gameState):
     bottomLeftPos, topLeftPos, bottomRightPos, topRightPos = gameState.getPossibleHouses()
 
     "*** YOUR CODE HERE ***"
-    def getAdjQuadrant(gameState, obsPos):
+    def getAdjHouseCenter(gameState, obsPos):
         dist = float("inf")
         adjacentHouse = None
         for house in gameState.getPossibleHouses():
@@ -231,35 +231,30 @@ def fillObsCPT(bayesNet, gameState):
         for obsPos in gameState.getHouseWalls(housePos):
             obsVar = OBS_VAR_TEMPLATE % obsPos
             obsVarFactor = bn.Factor([obsVar], [FOOD_HOUSE_VAR, GHOST_HOUSE_VAR], bayesNet.variableDomainsDict())
-            obsCPT = obsVarFactor.getAllPossibleAssignmentDicts()
-            for row in obsCPT:
-                ghostHouseVal = row[GHOST_HOUSE_VAR]
-                foodHouseVal = row[FOOD_HOUSE_VAR]
-                color = row[obsVar]
-                quadrant = getAdjQuadrant(gameState, obsPos)
+
+            for assignment in obsVarFactor.getAllPossibleAssignmentDicts():
+                ghostHouseVal = assignment[GHOST_HOUSE_VAR]
+                foodHouseVal = assignment[FOOD_HOUSE_VAR]
+                color = assignment[obsVar]
+
+                adjHouseCenter = getAdjHouseCenter(gameState, obsPos)
+                print adjHouseCenter
+                
                 prob = 0
-                if quadrant != ghostHouseVal and quadrant != foodHouseVal:
-                    if color == RED_OBS_VAL:
-                        prob = 0
-                    elif color == BLUE_OBS_VAL:
-                        prob = 0
-                    elif color == NO_OBS_VAL:
-                        prob = 1
-                elif ghostHouseVal == foodHouseVal or foodHouseVal == quadrant:
+                if adjHouseCenter != ghostHouseVal and adjHouseCenter != foodHouseVal:
+                    if color == NO_OBS_VAL:
+                        prob = 1    
+                elif adjHouseCenter == foodHouseVal or ghostHouseVal == foodHouseVal:
                     if color == RED_OBS_VAL:
                         prob = PROB_FOOD_RED
                     elif color == BLUE_OBS_VAL:
                         prob = 1 - PROB_FOOD_RED
-                    elif color == NO_OBS_VAL:
-                        prob = 0
-                elif quadrant == ghostHouseVal:
+                else: # adjHouseCenter == ghostHouseVal
                     if color == RED_OBS_VAL:
                         prob = PROB_GHOST_RED
                     elif color == BLUE_OBS_VAL:
                         prob = 1 - PROB_GHOST_RED
-                    elif color == NO_OBS_VAL:
-                        prob = 0
-                obsVarFactor.setProbability(row, prob)
+                obsVarFactor.setProbability(assignment, prob)
             bayesNet.setCPT(obsVar, obsVarFactor) 
 
 

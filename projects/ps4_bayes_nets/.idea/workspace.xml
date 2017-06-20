@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a9943445-6569-40b8-96ba-3955dd20dd4e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/VERSION" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/autograder.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bayesAgents.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bayesNet.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bayesNets2TestClasses.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/factorOperations.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/game.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ghostAgents.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/grading.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/graphicsDisplay.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/graphicsUtils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hunters.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/inference.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/keyboardAgents.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/layout.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/layouts/bigHunt.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/layouts/oneHunt.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/layouts/openHunt.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/layouts/smallHunt.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/longBottomBoard.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pacmanAgents.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projectParams.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/smallBoard.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/submission_autograder.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testClasses.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testParser.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/1-small-board.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/1-small-board.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/2-long-bottom.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/2-long-bottom.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/3-wide-inverted.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/3-wide-inverted.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q1/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/1-small-board.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/1-small-board.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/2-long-bottom.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/2-long-bottom.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/3-wide-inverted.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/3-wide-inverted.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q2/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/1-product-rule.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/1-product-rule.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/2-product-rule-extended.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/2-product-rule-extended.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/3-disjoint-right.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/3-disjoint-right.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/4-common-right.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/4-common-right.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/5-grade-join.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/5-grade-join.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/6-product-rule-nonsingleton-var.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/6-product-rule-nonsingleton-var.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q3/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/1-simple-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/1-simple-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/2-simple-eliminate-extended.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/2-simple-eliminate-extended.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/3-eliminate-conditioned.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/3-eliminate-conditioned.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/4-grade-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/4-grade-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/5-simple-eliminate-nonsingleton-var.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/5-simple-eliminate-nonsingleton-var.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/6-simple-eliminate-int.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/6-simple-eliminate-int.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q4/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/1-preNormalized.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/1-preNormalized.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/10-simple-normalize-int.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/10-simple-normalize-int.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/2-preUnNormalized.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/2-preUnNormalized.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/3-simple-normalize.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/3-simple-normalize.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/4-zeroVal-normalize.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/4-zeroVal-normalize.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/5-extended-normalize.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/5-extended-normalize.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/6-conditioned-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/6-conditioned-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/7-singleDomainUnconditional-extraDomain.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/7-singleDomainUnconditional-extraDomain.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/8-simple-normalize-nonsingleton-var.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/8-simple-normalize-nonsingleton-var.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/9-simple-normalize-multiple-singleEntry.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/9-simple-normalize-multiple-singleEntry.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q5/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/1-disconnected-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/1-disconnected-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/2-independent-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/2-independent-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/3-independent-eliminate-extended.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/3-independent-eliminate-extended.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/4-common-effect-eliminate.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/4-common-effect-eliminate.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/5-grade-var-elim.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/5-grade-var-elim.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/6-large-bayesNet-elim.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/6-large-bayesNet-elim.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q6/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/1-small-board.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/1-small-board.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/2-long-bottom.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/2-long-bottom.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/3-wide-inverted.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/3-wide-inverted.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/4-small-board-a-priori.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/4-small-board-a-priori.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q7/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q8/1-vpi-board-enter.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q8/1-vpi-board-enter.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q8/2-vpi-board-explore.solution" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q8/2-vpi-board-explore.test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_cases/q8/CONFIG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/textDisplay.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/treasureHunt.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/util.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vpiBoard.lay" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/wideInvertedBoard.lay" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="82" />
+    <option name="y" value="31" />
+    <option name="width" value="1099" />
+    <option name="height" value="717" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="/opt/local/bin/python3" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a9943445-6569-40b8-96ba-3955dd20dd4e" name="Default" comment="" />
+      <created>1497972150018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1497972150018</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="82" y="31" width="1099" height="717" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24931756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>
