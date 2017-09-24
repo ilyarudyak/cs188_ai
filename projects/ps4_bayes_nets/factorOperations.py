@@ -15,6 +15,7 @@
 from bayesNet import Factor
 import operator as op
 import util
+from collections import defaultdict
 
 
 def joinFactorsByVariableWithCallTracking(callTrackingList=None):
@@ -120,8 +121,7 @@ def joinFactors(factors):
 
     # we generate all possible assignments and for each assignment multiply probabilities of factors;
     # we may use full assignment - we reduce it in __getAssignmentsInOrder() just for actual variables
-    assignments = joinedFactor.getAllPossibleAssignmentDicts()
-    for assignment in assignments:
+    for assignment in joinedFactor.getAllPossibleAssignmentDicts():
         prob = reduce(lambda x, y: x * y, map(lambda f: f.getProbability(assignment), factors))
         joinedFactor.setProbability(assignment, prob)
 
@@ -157,7 +157,7 @@ def eliminateWithCallTracking(callTrackingList=None):
         if not (callTrackingList is None):
             callTrackingList.append(('eliminate', eliminationVariable))
 
-        # typecheck portion
+        # typecheck portion: we may eliminate only unconditioned variables
         if eliminationVariable not in factor.unconditionedVariables():
             print "Factor failed eliminate typecheck: ", factor
             raise ValueError, ("Elimination variable is not an unconditioned variable " \
@@ -173,12 +173,34 @@ def eliminateWithCallTracking(callTrackingList=None):
                                "unconditionedVariables: " + str(factor.unconditionedVariables()))
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        unconditioned = factor.unconditionedVariables()
+        unconditioned.remove(eliminationVariable)
+        eliminatedFactor = Factor(unconditioned, factor.conditionedVariables(), factor.variableDomainsDict())
+
+        assignments = eliminatedFactor.getAllPossibleAssignmentDicts()
+        assignmentsInitial = factor.getAllPossibleAssignmentDicts()
+
+        for assignment in assignments:
+            prob = 0.0
+            for assignmentInitial in assignmentsInitial:
+                if isSubAssignment(assignment, assignmentInitial):
+                    prob += factor.getProbability(assignmentInitial)
+            eliminatedFactor.setProbability(assignment, prob)
+
+        return eliminatedFactor
 
     return eliminate
 
 
 eliminate = eliminateWithCallTracking()
+
+
+def isSubAssignment(assignment, assignmentLarge):
+    for v in assignment:
+        if assignment[v] != assignmentLarge[v]:
+            return False
+    return True
+
 
 
 def normalize(factor):
@@ -230,3 +252,5 @@ def normalize(factor):
 
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
+
+
