@@ -98,8 +98,10 @@ def constructBayesNet(gameState):
     "*** YOUR CODE HERE ***"
     edges += [(X_POS_VAR, FOOD_HOUSE_VAR), (X_POS_VAR, GHOST_HOUSE_VAR), 
               (Y_POS_VAR, FOOD_HOUSE_VAR), (Y_POS_VAR, GHOST_HOUSE_VAR)]
-    variableDomainsDict.update({X_POS_VAR:X_POS_VALS, Y_POS_VAR:Y_POS_VALS,
-                                FOOD_HOUSE_VAR:HOUSE_VALS, GHOST_HOUSE_VAR:HOUSE_VALS})
+    variableDomainsDict.update({X_POS_VAR: X_POS_VALS,
+                                Y_POS_VAR: Y_POS_VALS,
+                                FOOD_HOUSE_VAR: HOUSE_VALS,
+                                GHOST_HOUSE_VAR: HOUSE_VALS})
     
     for housePos in gameState.getPossibleHouses():
         for obsPos in gameState.getHouseWalls(housePos):

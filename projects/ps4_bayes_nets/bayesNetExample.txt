@@ -1,0 +1,207 @@
+Print a conditional probability table (henceforth known as a CPT) to see a pretty print of the variables in a factor and its probability table in your terminal. CPTs come initialized with 0 for each row in the table: 
+
+P(Raining)
+
+ | Raining |  Prob:  |
+ ---------------------
+ |   yes   | 0.0e+00 |
+ |    no   | 0.0e+00 |
+
+After setting entries: 
+
+P(Raining)
+
+ | Raining |  Prob:  |
+ ---------------------
+ |   yes   | 0.30000 |
+ |    no   | 0.70000 |
+
+Note that in the table output of print for factors with conditioned variables, each region with a different assignment of conditioned variables is divided into a region in the table, separated from other conditioned assignments by a horizontal bar. If a factor is a CPT, each sub table of that factor will sum to 1. 
+
+P(Traffic | Raining, Ballgame)
+
+ | Traffic | Raining | Ballgame |  Prob:  |
+ ------------------------------------------
+ |   yes   |   yes   |   yes    | 0.95000 |
+ |    no   |   yes   |   yes    | 5.0e-02 |
+ ------------------------------------------
+ |   yes   |    no   |   yes    | 0.90000 |
+ |    no   |    no   |   yes    | 0.10000 |
+ ------------------------------------------
+ |   yes   |   yes   |    no    | 0.70000 |
+ |    no   |   yes   |    no    | 0.30000 |
+ ------------------------------------------
+ |   yes   |    no   |    no    | 0.15000 |
+ |    no   |    no   |    no    | 0.85000 |
+
+You can use factor.getAllPossibleAssignmentDicts() to iterate through all combinations of assignments:
+
+{'Raining': 'yes', 'Traffic': 'yes', 'Ballgame': 'yes'}
+{'Raining': 'yes', 'Traffic': 'no', 'Ballgame': 'yes'}
+{'Raining': 'no', 'Traffic': 'yes', 'Ballgame': 'yes'}
+{'Raining': 'no', 'Traffic': 'no', 'Ballgame': 'yes'}
+{'Raining': 'yes', 'Traffic': 'yes', 'Ballgame': 'no'}
+{'Raining': 'yes', 'Traffic': 'no', 'Ballgame': 'no'}
+{'Raining': 'no', 'Traffic': 'yes', 'Ballgame': 'no'}
+{'Raining': 'no', 'Traffic': 'no', 'Ballgame': 'no'}
+
+Last CPT: 
+
+P(Ballgame)
+
+ | Ballgame |  Prob:  |
+ ----------------------
+ |   yes    | 5.0e-02 |
+ |    no    | 0.95000 |
+
+Print a Bayes' net to see its variables, edges, and the CPT for each variable.
+
+Variables: Raining, Traffic, Ballgame
+Edges: Raining -> Traffic, Ballgame -> Traffic
+
+Conditional Probability Tables:
+
+P(Raining)
+
+ | Raining |  Prob:  |
+ ---------------------
+ |   yes   | 0.30000 |
+ |    no   | 0.70000 |
+
+ ======================= 
+
+P(Traffic | Raining, Ballgame)
+
+ | Traffic | Raining | Ballgame |  Prob:  |
+ ------------------------------------------
+ |   yes   |   yes   |   yes    | 0.95000 |
+ |    no   |   yes   |   yes    | 5.0e-02 |
+ ------------------------------------------
+ |   yes   |    no   |   yes    | 0.90000 |
+ |    no   |    no   |   yes    | 0.10000 |
+ ------------------------------------------
+ |   yes   |   yes   |    no    | 0.70000 |
+ |    no   |   yes   |    no    | 0.30000 |
+ ------------------------------------------
+ |   yes   |    no   |    no    | 0.15000 |
+ |    no   |    no   |    no    | 0.85000 |
+
+ ======================= 
+
+P(Ballgame)
+
+ | Ballgame |  Prob:  |
+ ----------------------
+ |   yes    | 5.0e-02 |
+ |    no    | 0.95000 |
+
+You can get a list of all CPTs from a Bayes' net, instantiated with evidence, with the getAllCPTsWithEvidence function. The evidenceDict input is an assignmentDict of (evidenceVariable, evidenceValue) pairs. Instantiation with evidence reduces the variable domains and thus selects a subset of entries from the probability table.
+P(Raining)
+
+ | Raining |  Prob:  |
+ ---------------------
+ |   yes   | 0.30000 |
+
+P(Traffic | Raining, Ballgame)
+
+ | Traffic | Raining | Ballgame |  Prob:  |
+ ------------------------------------------
+ |   yes   |   yes   |   yes    | 0.95000 |
+ |    no   |   yes   |   yes    | 5.0e-02 |
+ ------------------------------------------
+ |   yes   |   yes   |    no    | 0.70000 |
+ |    no   |   yes   |    no    | 0.30000 |
+
+P(Ballgame)
+
+ | Ballgame |  Prob:  |
+ ----------------------
+ |   yes    | 5.0e-02 |
+ |    no    | 0.95000 |
+
+If it is empty or None, the full CPTs will be returned. 
+
+P(Raining)
+
+ | Raining |  Prob:  |
+ ---------------------
+ |   yes   | 0.30000 |
+ |    no   | 0.70000 |
+
+P(Traffic | Raining, Ballgame)
+
+ | Traffic | Raining | Ballgame |  Prob:  |
+ ------------------------------------------
+ |   yes   |   yes   |   yes    | 0.95000 |
+ |    no   |   yes   |   yes    | 5.0e-02 |
+ ------------------------------------------
+ |   yes   |    no   |   yes    | 0.90000 |
+ |    no   |    no   |   yes    | 0.10000 |
+ ------------------------------------------
+ |   yes   |   yes   |    no    | 0.70000 |
+ |    no   |   yes   |    no    | 0.30000 |
+ ------------------------------------------
+ |   yes   |    no   |    no    | 0.15000 |
+ |    no   |    no   |    no    | 0.85000 |
+
+P(Ballgame)
+
+ | Ballgame |  Prob:  |
+ ----------------------
+ |   yes    | 5.0e-02 |
+ |    no    | 0.95000 |
+
+If only one variable's CPT is desired, you can get just that particular CPT with the bayesNet.getCPT function. 
+
+P(Traffic | Raining, Ballgame)
+
+ | Traffic | Raining | Ballgame |  Prob:  |
+ ------------------------------------------
+ |   yes   |   yes   |   yes    | 0.95000 |
+ |    no   |   yes   |   yes    | 5.0e-02 |
+ ------------------------------------------
+ |   yes   |    no   |   yes    | 0.90000 |
+ |    no   |    no   |   yes    | 0.10000 |
+ ------------------------------------------
+ |   yes   |   yes   |    no    | 0.70000 |
+ |    no   |   yes   |    no    | 0.30000 |
+ ------------------------------------------
+ |   yes   |    no   |    no    | 0.15000 |
+ |    no   |    no   |    no    | 0.85000 |
+
+RainingunconditionedVariables: "Raining"
+
+RainingconditionedVariables: ""
+
+RainingFactorTable: """
+Raining : yes = 0.3
+Raining : no = 0.7
+"""
+
+
+TrafficunconditionedVariables: "Traffic"
+
+TrafficconditionedVariables: "Raining Ballgame"
+
+TrafficFactorTable: """
+Traffic : yes, Raining : yes, Ballgame : yes = 0.95
+Traffic : no, Raining : yes, Ballgame : yes = 0.05
+Traffic : yes, Raining : no, Ballgame : yes = 0.9
+Traffic : no, Raining : no, Ballgame : yes = 0.1
+Traffic : yes, Raining : yes, Ballgame : no = 0.7
+Traffic : no, Raining : yes, Ballgame : no = 0.3
+Traffic : yes, Raining : no, Ballgame : no = 0.15
+Traffic : no, Raining : no, Ballgame : no = 0.85
+"""
+
+
+BallgameunconditionedVariables: "Ballgame"
+
+BallgameconditionedVariables: ""
+
+BallgameFactorTable: """
+Ballgame : yes = 0.05
+Ballgame : no = 0.95
+"""
+
+
