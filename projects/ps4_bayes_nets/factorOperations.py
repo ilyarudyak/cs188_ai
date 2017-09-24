@@ -202,7 +202,6 @@ def isSubAssignment(assignment, assignmentLarge):
     return True
 
 
-
 def normalize(factor):
     """
     Question 5: Your normalize implementation 
@@ -240,7 +239,7 @@ def normalize(factor):
     Factor.variableDomainsDict
     """
 
-    # typecheck portion
+    # type check portion
     variableDomainsDict = factor.variableDomainsDict()
     for conditionedVariable in factor.conditionedVariables():
         if len(variableDomainsDict[conditionedVariable]) > 1:
@@ -251,6 +250,29 @@ def normalize(factor):
                                str(factor))
 
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    assignments = factor.getAllPossibleAssignmentDicts()
+    norm = sum([factor.getProbability(a) for a in assignments])
+
+    if not norm:
+        return None
+
+    unconditioned = factor.unconditionedVariables()
+    conditioned = factor.conditionedVariables()
+
+    unconditioned_modified = []
+    for v in unconditioned:
+        if len(variableDomainsDict[v]) <= 1:
+            conditioned.add(v)
+        else:
+            unconditioned_modified.append(v)
+
+    normFactor = Factor(unconditioned_modified,
+                        conditioned,
+                        factor.variableDomainsDict())
+
+    for a in assignments:
+        normFactor.setProbability(a, factor.getProbability(a) / norm)
+
+    return normFactor
 
 
