@@ -16,9 +16,8 @@ from bayesNet import Factor
 import operator as op
 import util
 
+
 def joinFactorsByVariableWithCallTracking(callTrackingList=None):
-
-
     def joinFactorsByVariable(factors, joinVariable):
         """
         Input factors is a list of factors.
@@ -37,21 +36,24 @@ def joinFactorsByVariableWithCallTracking(callTrackingList=None):
         if not (callTrackingList is None):
             callTrackingList.append(('join', joinVariable))
 
-        currentFactorsToJoin =    [factor for factor in factors if joinVariable in factor.variablesSet()]
+        currentFactorsToJoin = [factor for factor in factors if joinVariable in factor.variablesSet()]
         currentFactorsNotToJoin = [factor for factor in factors if joinVariable not in factor.variablesSet()]
 
         # typecheck portion
-        numVariableOnLeft = len([factor for factor in currentFactorsToJoin if joinVariable in factor.unconditionedVariables()])
+        numVariableOnLeft = len(
+            [factor for factor in currentFactorsToJoin if joinVariable in factor.unconditionedVariables()])
         if numVariableOnLeft > 1:
             print "Factor failed joinFactorsByVariable typecheck: ", factor
-            raise ValueError, ("The joinBy variable can only appear in one factor as an \nunconditioned variable. \n" +  
+            raise ValueError, ("The joinBy variable can only appear in one factor as an \nunconditioned variable. \n" +
                                "joinVariable: " + str(joinVariable) + "\n" +
-                               ", ".join(map(str, [factor.unconditionedVariables() for factor in currentFactorsToJoin])))
-        
+                               ", ".join(
+                                   map(str, [factor.unconditionedVariables() for factor in currentFactorsToJoin])))
+
         joinedFactor = joinFactors(currentFactorsToJoin)
         return currentFactorsNotToJoin, joinedFactor
 
     return joinFactorsByVariable
+
 
 joinFactorsByVariable = joinFactorsByVariableWithCallTracking()
 
@@ -87,25 +89,46 @@ def joinFactors(factors):
     Factor.variableDomainsDict
     """
 
-    # typecheck portion
+    # type check portion
     setsOfUnconditioned = [set(factor.unconditionedVariables()) for factor in factors]
     if len(factors) > 1:
         intersect = reduce(lambda x, y: x & y, setsOfUnconditioned)
         if len(intersect) > 0:
             print "Factor failed joinFactors typecheck: ", factor
             raise ValueError, ("unconditionedVariables can only appear in one factor. \n"
-                    + "unconditionedVariables: " + str(intersect) + 
-                    "\nappear in more than one input factor.\n" + 
-                    "Input factors: \n" +
-                    "\n".join(map(str, factors)))
-
+                               + "unconditionedVariables: " + str(intersect) +
+                               "\nappear in more than one input factor.\n" +
+                               "Input factors: \n" +
+                               "\n".join(map(str, factors)))
 
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    if len(factors) < 2:
+        raise ValueError("must be at least two factors")
+
+    # we assume that all variableDomainsDict are the same (see description);
+    # in our case: {'foodHouse': ['topLeft', ...], 'xPos': ['foodLeft', ...], ...}
+    variableDomainsDict = factors[0].variableDomainsDict()
+
+    # accumulate all variables
+    unconditioned = reduce(lambda x, y: x | y, [f.unconditionedVariables() for f in factors])
+    conditioned = reduce(lambda x, y: x | y, [f.conditionedVariables() for f in factors])
+
+    # remove condition variable if it's in unconditioned
+    conditioned = [var for var in conditioned if var not in unconditioned]
+
+    joinedFactor = Factor(unconditioned, conditioned, variableDomainsDict)
+
+    # we generate all possible assignments and for each assignment multiply probabilities of factors;
+    # we may use full assignment - we reduce it in __getAssignmentsInOrder() just for actual variables
+    assignments = joinedFactor.getAllPossibleAssignmentDicts()
+    for assignment in assignments:
+        prob = reduce(lambda x, y: x * y, map(lambda f: f.getProbability(assignment), factors))
+        joinedFactor.setProbability(assignment, prob)
+
+    return joinedFactor
 
 
 def eliminateWithCallTracking(callTrackingList=None):
-
     def eliminate(factor, eliminationVariable):
         """
         Question 4: Your eliminate implementation 
@@ -138,21 +161,22 @@ def eliminateWithCallTracking(callTrackingList=None):
         if eliminationVariable not in factor.unconditionedVariables():
             print "Factor failed eliminate typecheck: ", factor
             raise ValueError, ("Elimination variable is not an unconditioned variable " \
-                            + "in this factor\n" + 
-                            "eliminationVariable: " + str(eliminationVariable) + \
-                            "\nunconditionedVariables:" + str(factor.unconditionedVariables()))
-        
+                               + "in this factor\n" +
+                               "eliminationVariable: " + str(eliminationVariable) + \
+                               "\nunconditionedVariables:" + str(factor.unconditionedVariables()))
+
         if len(factor.unconditionedVariables()) == 1:
             print "Factor failed eliminate typecheck: ", factor
             raise ValueError, ("Factor has only one unconditioned variable, so you " \
-                    + "can't eliminate \nthat variable.\n" + \
-                    "eliminationVariable:" + str(eliminationVariable) + "\n" +\
-                    "unconditionedVariables: " + str(factor.unconditionedVariables()))
+                               + "can't eliminate \nthat variable.\n" + \
+                               "eliminationVariable:" + str(eliminationVariable) + "\n" + \
+                               "unconditionedVariables: " + str(factor.unconditionedVariables()))
 
         "*** YOUR CODE HERE ***"
         util.raiseNotDefined()
 
     return eliminate
+
 
 eliminate = eliminateWithCallTracking()
 
@@ -200,10 +224,9 @@ def normalize(factor):
         if len(variableDomainsDict[conditionedVariable]) > 1:
             print "Factor failed normalize typecheck: ", factor
             raise ValueError, ("The factor to be normalized must have only one " + \
-                            "assignment of the \n" + "conditional variables, " + \
-                            "so that total probability will sum to 1\n" + 
-                            str(factor))
+                               "assignment of the \n" + "conditional variables, " + \
+                               "so that total probability will sum to 1\n" +
+                               str(factor))
 
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
-

@@ -1,0 +1,1 @@
+python2 autograder.py -t test_cases/q3/1-product-rule

@@ -529,6 +529,7 @@ class Factor(object):
         """
         reducedAssignmentDict = dict([(var, val) for (var, val)
                                       in assignmentDict.items() if var in self.__variablesSet])
+        # print 'reducedAssignmentDict=', reducedAssignmentDict
         variablesAndAssignments = reducedAssignmentDict.items()
         variablesAndAssignments = sorted(variablesAndAssignments,
                                          key=lambda (var, val): self.__variableOrders[var])
