@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c1c2b25-3f4b-42d2-827e-9f23e85e7097" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ps4_bayes_nets/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ps4_bayes_nets/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ps4_bayes_nets/bayesAgents.py" afterPath="$PROJECT_DIR$/../ps4_bayes_nets/bayesAgents.py" />
-    </list>
+    <list default="true" id="9c1c2b25-3f4b-42d2-827e-9f23e85e7097" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +34,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ps6_classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps6_classification" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
     </panes>

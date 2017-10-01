@@ -53,8 +53,20 @@ Question q10: 3/3
 ------------------
 Total: 25/25`
 
-### project4 Bayes' Nets (inference in BN) **STARTED**
+### project4 Bayes' Nets (except q8) **DONE**
 
+`Provisional grades
+==================
+Question q1: 3/3
+Question q2: 3/3
+Question q3: 5/5
+Question q4: 4/4
+Question q5: 4/4
+Question q6: 4/4
+Question q7: 1/1
+Question q8: 0/4
+------------------
+Total: 24/28`
 
 ### progect5 Ghostbusters **NOT STARTED**
 
