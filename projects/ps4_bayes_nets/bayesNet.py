@@ -311,9 +311,11 @@ class Factor(object):
         " Retuns a copy of the conditioned variables in the factor "
         return copy(self.__conditionedVariables)
 
+    # debugging method
     def variableOrders(self):
         return self.__variableOrders
 
+    # debugging method
     def probDict(self):
         return self.__probDict
 
