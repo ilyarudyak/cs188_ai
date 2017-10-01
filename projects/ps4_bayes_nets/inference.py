@@ -18,6 +18,7 @@ from bayesNet import Factor
 from factorOperations import joinFactorsByVariableWithCallTracking, joinFactors
 from factorOperations import eliminateWithCallTracking, normalize
 
+
 def inferenceByEnumeration(bayesNet, queryVariables, evidenceDict):
     """
     An inference by enumeration implementation provided as reference.
@@ -50,7 +51,8 @@ def inferenceByEnumeration(bayesNet, queryVariables, evidenceDict):
         currentFactorsList, joinedFactor = joinFactorsByVariable(currentFactorsList, joinVariable)
         currentFactorsList.append(joinedFactor)
 
-    # currentFactorsList should contain the connected components of the graph now as factors, must join the connected components
+    # currentFactorsList should contain the connected components of the graph now as factors,
+    # must join the connected components
     fullJoint = joinFactors(currentFactorsList)
 
     # marginalize all variables that aren't query or evidence
@@ -67,11 +69,11 @@ def inferenceByEnumeration(bayesNet, queryVariables, evidenceDict):
     # now the factor is conditioned on the evidence variables
 
     # the order is join on all variables, then eliminate on all elimination variables
-    #print "callTrackingList: ", callTrackingList
+    # print "callTrackingList: ", callTrackingList
     return queryConditionedOnEvidence
 
-def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
 
+def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
     def inferenceByVariableElimination(bayesNet, queryVariables, evidenceDict, eliminationOrder):
         """
         Question 6: Your inference by variable elimination implementation
@@ -124,19 +126,20 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
 
         # this is for autograding -- don't modify
         joinFactorsByVariable = joinFactorsByVariableWithCallTracking(callTrackingList)
-        eliminate             = eliminateWithCallTracking(callTrackingList)
-        if eliminationOrder is None: # set an arbitrary elimination order if None given
-            eliminationVariables = bayesNet.variablesSet() - set(queryVariables) -\
+        eliminate = eliminateWithCallTracking(callTrackingList)
+        if eliminationOrder is None:  # set an arbitrary elimination order if None given
+            eliminationVariables = bayesNet.variablesSet() - set(queryVariables) - \
                                    set(evidenceDict.keys())
             eliminationOrder = sorted(list(eliminationVariables))
 
         "*** YOUR CODE HERE ***"
         util.raiseNotDefined()
 
-
     return inferenceByVariableElimination
 
+
 inferenceByVariableElimination = inferenceByVariableEliminationWithCallTracking()
+
 
 def sampleFromFactorRandomSource(randomSource=None):
     if randomSource is None:
@@ -162,17 +165,17 @@ def sampleFromFactorRandomSource(randomSource=None):
         """
         if conditionedAssignments is None and len(factor.conditionedVariables()) > 0:
             raise ValueError, ("Conditioned assignments must be provided since \n" +
-                            "this factor has conditionedVariables: " + "\n" +
-                            str(factor.conditionedVariables()))
+                               "this factor has conditionedVariables: " + "\n" +
+                               str(factor.conditionedVariables()))
 
         elif conditionedAssignments is not None:
             conditionedVariables = set([var for var in conditionedAssignments.keys()])
 
             if not conditionedVariables.issuperset(set(factor.conditionedVariables())):
                 raise ValueError, ("Factor's conditioned variables need to be a subset of the \n"
-                                    + "conditioned assignments passed in. \n" + \
-                                "conditionedVariables: " + str(conditionedVariables) + "\n" +
-                                "factor.conditionedVariables: " + str(set(factor.conditionedVariables())))
+                                   + "conditioned assignments passed in. \n" + \
+                                   "conditionedVariables: " + str(conditionedVariables) + "\n" +
+                                   "factor.conditionedVariables: " + str(set(factor.conditionedVariables())))
 
             # Reduce the domains of the variables that have been
             # conditioned upon for this factor 
@@ -185,7 +188,7 @@ def sampleFromFactorRandomSource(randomSource=None):
             CPT = factor.specializeVariableDomains(newVariableDomainsDict)
         else:
             CPT = factor
-        
+
         # Get the probability of each row of the table (along with the
         # assignmentDict that it corresponds to)
         assignmentDicts = sorted([assignmentDict for assignmentDict in CPT.getAllPossibleAssignmentDicts()])
@@ -209,5 +212,6 @@ def sampleFromFactorRandomSource(randomSource=None):
                 return assignmentDicts[i]
 
     return sampleFromFactor
+
 
 sampleFromFactor = sampleFromFactorRandomSource()
