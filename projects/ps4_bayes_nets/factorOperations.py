@@ -103,8 +103,8 @@ def joinFactors(factors):
                                "\n".join(map(str, factors)))
 
     "*** YOUR CODE HERE ***"
-    if len(factors) < 2:
-        raise ValueError("must be at least two factors")
+    # if len(factors) < 2:
+    #     raise ValueError("must be at least two factors")
 
     # we assume that all variableDomainsDict are the same (see description);
     # in our case: {'foodHouse': ['topLeft', ...], 'xPos': ['foodLeft', ...], ...}
