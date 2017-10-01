@@ -286,6 +286,7 @@ def getMostLikelyFoodHousePosition(evidence, bayesNet, eliminationOrder):
     (This should be a very short method.)
     """
     "*** YOUR CODE HERE ***"
+    # this method should return assignment, not just location of the FoodHouse
     factor = inference.inferenceByVariableElimination(bayesNet, FOOD_HOUSE_VAR,
                                                       evidence, eliminationOrder)
 
