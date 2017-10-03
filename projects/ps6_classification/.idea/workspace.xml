@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c1c2b25-3f4b-42d2-827e-9f23e85e7097" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perceptron.py" afterPath="$PROJECT_DIR$/perceptron.py" />
-    </list>
+    <list default="true" id="9c1c2b25-3f4b-42d2-827e-9f23e85e7097" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +14,8 @@
       <file leaf-file-name="perceptron.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/perceptron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1069">
-              <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+            <state relative-caret-position="109">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#686#697#0" expanded="true" />
@@ -160,8 +157,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/perceptron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1069">
-          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+        <state relative-caret-position="109">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
             <element signature="e#686#697#0" expanded="true" />
