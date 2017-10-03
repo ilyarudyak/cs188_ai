@@ -86,7 +86,6 @@ class PerceptronClassifier(object):
                     self.weights[y_star] += f
                     self.weights[y_max] -= f
 
-            
     def classify(self, input_datum_or_data):
         """
         Classifies a datum or each datum in a list of data.
