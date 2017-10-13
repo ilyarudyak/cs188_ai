@@ -401,5 +401,5 @@ class MinibatchStochasticGradientDescentSolver(GradientDescentSolver):
 
             if callback is not None: callback(model)
             self.display_progress(iter_, train_losses, val_losses)
-            
+
         return train_losses, val_losses
