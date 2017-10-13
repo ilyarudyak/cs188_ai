@@ -62,7 +62,19 @@ def search_hyperparams(train_data, train_labels, val_data, val_labels,
 
     val_accuracies = []
     # Loop over hyperparams
+    best_hyperparams = None
+    index = 1
+    best_model = None
+    max_accuracy = float("-inf")
     for model, (learning_rate, momentum, batch_size) in zip(models, hyperparams):
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        solver = solvers.MinibatchStochasticGradientDescentSolver(learning_rate, iterations, batch_size, momentum)
+        train_losses, val_losses = solver.solve(train_data, train_labels, val_data, val_labels, model)
+        accuracy = model.accuracy(val_data, val_labels)
+        if accuracy > max_accuracy:
+            max_accuracy = accuracy
+            best_model = model
+            best_hyperparams = index
+        index += 1
+
     return best_model, best_hyperparams

@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9c1c2b25-3f4b-42d2-827e-9f23e85e7097" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ps5_ghostbusters/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ps5_ghostbusters/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/answers.py" afterPath="$PROJECT_DIR$/answers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers.py" afterPath="$PROJECT_DIR$/solvers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search_hyperparams.py" afterPath="$PROJECT_DIR$/search_hyperparams.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,61 +14,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="solvers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers.py">
+      <file leaf-file-name="search_hyperparams.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/search_hyperparams.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="308" column="70" lean-forward="false" selection-start-line="308" selection-start-column="70" selection-end-line="308" selection-end-column="70" />
+            <state relative-caret-position="-54">
+              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
-                <element signature="e#870#1000#0" expanded="false" />
-                <element signature="e#1047#1140#0" expanded="false" />
-                <element signature="e#1169#1354#0" expanded="false" />
-                <element signature="e#1169#1207#1" expanded="false" />
-                <element signature="e#1329#1354#0" expanded="false" />
-                <element signature="e#1398#9880#0" expanded="false" />
-                <element signature="e#1512#2913#0" expanded="false" />
-                <element signature="e#1512#2100#1" expanded="false" />
-                <element signature="e#2992#3949#0" expanded="false" />
-                <element signature="e#2992#3593#1" expanded="false" />
-                <element signature="e#3762#3925#0" expanded="false" />
-                <element signature="e#4025#5272#0" expanded="false" />
-                <element signature="e#4025#4658#1" expanded="false" />
-                <element signature="e#5016#5248#0" expanded="false" />
-                <element signature="e#5355#5545#0" expanded="false" />
-                <element signature="e#5607#6215#0" expanded="false" />
-                <element signature="e#5607#6017#1" expanded="false" />
-                <element signature="e#6338#9120#0" expanded="false" />
-                <element signature="e#6338#7470#1" expanded="false" />
-                <element signature="e#8300#9079#0" expanded="false" />
-                <element signature="e#8337#8417#0" expanded="false" />
-                <element signature="e#9195#9880#0" expanded="false" />
-                <element signature="e#9453#9880#0" expanded="false" />
-                <element signature="e#9949#15055#0" expanded="false" />
-                <element signature="e#10077#11048#0" expanded="false" />
-                <element signature="e#10077#10800#1" expanded="false" />
-                <element signature="e#11171#15055#0" expanded="false" />
-                <element signature="e#11171#13182#1" expanded="false" />
-                <element signature="e#14169#15014#0" expanded="false" />
-                <element signature="e#14206#14314#0" expanded="false" />
-                <element signature="e#15133#20419#0" expanded="false" />
-                <element signature="e#15273#16572#0" expanded="false" />
-                <element signature="e#15273#16117#1" expanded="false" />
-                <element signature="e#16695#20419#0" expanded="false" />
-                <element signature="e#16695#18523#1" expanded="false" />
-                <element signature="e#19538#20378#0" expanded="false" />
-                <element signature="e#19915#20023#0" expanded="false" />
+                <element signature="e#947#1618#1" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="answers.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/answers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -85,6 +38,7 @@
         <option value="$PROJECT_DIR$/perceptron.py" />
         <option value="$PROJECT_DIR$/solvers.py" />
         <option value="$PROJECT_DIR$/answers.py" />
+        <option value="$PROJECT_DIR$/search_hyperparams.py" />
       </list>
     </option>
   </component>
@@ -384,6 +338,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/answers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/solvers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -431,11 +393,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/answers.py">
+    <entry file="file://$PROJECT_DIR$/search_hyperparams.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-54">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#947#1618#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
