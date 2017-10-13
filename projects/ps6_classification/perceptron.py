@@ -78,7 +78,8 @@ class PerceptronClassifier(object):
 
             for (f, y_star) in zip(input_train_data, label_train_data):
                 # the callback plots the line in the Pacman Plot
-                if callback is not None: callback()
+                if callback is not None:
+                    callback()
 
                 "*** YOUR CODE HERE ***"
                 y_max = self.classify(f)
