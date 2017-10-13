@@ -84,6 +84,7 @@ class PerceptronClassifier(object):
                 "*** YOUR CODE HERE ***"
                 y_max = self.classify(f)
                 if y_star != y_max:
+                    print type(f), len(f)
                     self.weights[y_star] += f
                     self.weights[y_max] -= f
 
@@ -124,9 +125,9 @@ class PerceptronClassifier(object):
         """
         Returns a list of the 100 features with the greatest weight for some label
         """
-        best100Features = self.weights[label].sortedKeys()[:100]
-
         "*** YOUR CODE HERE ***"
+        # print len(self.weights[label]), type(self.weights[label]), self.weights[label]
+        best100Features = self.weights[label].sortedKeys()[:100]
 
         return best100Features
 
