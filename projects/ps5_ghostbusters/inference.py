@@ -75,6 +75,10 @@ class DiscreteDistribution(dict):
         {}
         """
         "*** YOUR CODE HERE ***"
+        total = self.total()
+        if total > 0:
+            for key in self:
+                self[key] /= total
 
     def sample(self):
         """
@@ -98,6 +102,17 @@ class DiscreteDistribution(dict):
         0.0
         """
         "*** YOUR CODE HERE ***"
+        sample_dist = self.copy()
+        sample_dist.normalize()
+        acc = 0.0
+        for key in sorted(sample_dist.keys()):
+            sample_dist[key] += acc
+            acc = sample_dist[key]
+
+        rn = random.random()
+        for key in sorted(sample_dist.keys()):
+            if rn < sample_dist[key]:
+                return key
 
 
 class InferenceModule:
